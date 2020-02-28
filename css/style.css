@@ -1,0 +1,9 @@
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0;left:40%; width: 60%; }
+#menu {
+    position: absolute;
+    left:40%;
+    background: #fff;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
