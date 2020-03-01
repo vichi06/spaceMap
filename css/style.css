@@ -1,9 +1,28 @@
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0;left:40%; width: 60%; }
-#menu {
+#map { 
+    position: absolute; 
+    top: 0; 
+    bottom: 0;
+    left:40%; 
+    width: 100%;
+    display: none;
+}
+
+#mapMenu {
     position: absolute;
     left:40%;
     background: #fff;
-    padding: 10px;
+    padding: 0.3%;
     font-family: 'Open Sans', sans-serif;
+    display: none;
+}
+
+#content {
+    margin-right: 65%;
+    margin-left: 2%;
+    margin-top: 5%;
+}
+
+#button_toggle {
+    margin-left: 60%;
+    margin-top: 10%;
 }
