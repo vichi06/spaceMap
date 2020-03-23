@@ -26,3 +26,8 @@ function toggle_map() {
   $("#map").toggle("slide");
   $("#mapMenu").toggle("slide");
 }
+
+$("#Alpha").draggable();
+$("#Echo").draggable();
+$("#India").draggable();
+$("#Charlie").draggable();

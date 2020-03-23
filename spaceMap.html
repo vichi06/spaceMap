@@ -1,75 +1,91 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Satellite Map</title>
-		<meta
-			name="viewport"
-			content="initial-scale=1,maximum-scale=1,user-scalable=no"
-		/>
+  <head>
+    <meta charset="utf-8" />
+    <title>Satellite Map</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
 
-		<!-- css -->
-		<link href="css/map.css" rel="stylesheet" />
+    <!-- css -->
+    <link href="css/map.css" rel="stylesheet" />
 
-		<!-- mapBox -->
-		<script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
-		<link
-			href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
-			rel="stylesheet"
-		/>
+    <!-- mapBox -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
 
-		<!-- Bootstrap -->
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-			crossorigin="anonymous"
-		/>
-	</head>
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
 
-	<body>
-		<div id="content">
-			<h1>
-				Welcome to SpaceTrack
-			</h1>
+  <body>
+    <div id="content">
+      <h1>
+        Welcome to SpaceTrack
+      </h1>
 
-			<p>
-				Here you will navigate over the planet Earth without any risk. Click on
-				the following button to fall into the void.
-			</p>
-		</div>
+      <p>
+        Here you will navigate over the planet Earth without any risk. Click on
+        the following button to fall into the void.
+      </p>
+    </div>
 
-		<div id="button_toggle">
-			<button onclick="toggle_map()">Interact with the map</button>
-		</div>
+    <div id="button_toggle">
+      <button onclick="toggle_map()">Interact with the map</button>
+    </div>
 
-		<div id="map"></div>
+    <div id="map"></div>
 
-		<div id="mapMenu">
-			<input id="streets-v11" type="radio" name="rtoggle" value="streets" />
-			<label for="streets">streets</label>
-			<input id="light-v10" type="radio" name="rtoggle" value="light" />
-			<label for="light">light</label>
-			<input
-				id="dark-v10"
-				type="radio"
-				name="rtoggle"
-				value="dark"
-				checked="checked"
-			/>
-			<label for="dark">dark</label>
-			<input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors" />
-			<label for="outdoors">outdoors</label>
-			<input id="satellite-v9" type="radio" name="rtoggle" value="satellite" />
-			<label for="satellite">satellite</label>
-		</div>
+    <div id="mapMenu">
+      <input id="streets-v11" type="radio" name="rtoggle" value="streets" />
+      <label for="streets">streets</label>
+      <input id="light-v10" type="radio" name="rtoggle" value="light" />
+      <label for="light">light</label>
+      <input
+        id="dark-v10"
+        type="radio"
+        name="rtoggle"
+        value="dark"
+        checked="checked"
+      />
+      <label for="dark">dark</label>
+      <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors" />
+      <label for="outdoors">outdoors</label>
+      <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" />
+      <label for="satellite">satellite</label>
+    </div>
 
-		<script src="js/map.js"></script>
-		<!-- jquery -->
-		<script
-			src="https://code.jquery.com/jquery-3.4.1.min.js"
-			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-			crossorigin="anonymous"
-		></script>
-	</body>
+    <img id="Alpha" src="images/satellites/Alpha.png" />
+
+    <img id="Charlie" src="images/satellites/Charlie.png" />
+
+    <img id="Echo" src="images/satellites/Echo.png" />
+
+    <img id="India" src="images/satellites/India.png" />
+
+    <script src="js/map.js"></script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Also include jQueryUI -->
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"
+    ></script>
+
+    <script>
+      $("#Alpha").draggable();
+      $("#Echo").draggable();
+      $("#India").draggable();
+      $("#Charlie").draggable();
+    </script>
+  </body>
 </html>
