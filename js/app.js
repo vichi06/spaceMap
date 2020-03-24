@@ -26,7 +26,7 @@ form.addEventListener("submit", e => {
             form.username.value == doc.data().username &&
             form.password.value == doc.data().password
           ) {
-            addPlayerInList(doc.id, doc.data().username, doc.data().password);
+            addPlayerInList(doc.id, doc.data().username, doc.data().score);
             playerAdded = true;
           }
         });
@@ -43,19 +43,19 @@ form.addEventListener("submit", e => {
 });
 
 // ADD A PLAYER TO THE LIST
-function addPlayerInList(id, username, record) {
+function addPlayerInList(id, username, score) {
   let li = document.createElement("li");
   let name = document.createElement("span");
-  let score = document.createElement("span");
+  let scorePlayer = document.createElement("span");
   let cross = document.createElement("div");
 
   li.setAttribute("data-id", id);
   name.textContent = username;
-  score.textContent = "highest score: " + record;
+  scorePlayer.textContent = "score: " + score;
   cross.textContent = "x";
 
   li.appendChild(name);
-  li.appendChild(score);
+  li.appendChild(scorePlayer);
   li.appendChild(cross);
 
   playerList.appendChild(li);

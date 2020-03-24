@@ -72,10 +72,14 @@ function chooseSatellite(satelliteName) {
   document.getElementById("about").scrollIntoView();
   // disable buttons
   var elems = document.getElementsByName("selectSatellite");
-  for (var i = 0; i < elems.length; i++) {
-    elems[i].disabled = true;
-  }
+  changeButtonChoicesState(false);
   satellite = satelliteName;
+}
+
+function changeButtonChoicesState(state) {
+  for (var i = 0; i < elems.length; i++) {
+    elems[i].disabled = state;
+  }
 }
 
 var indiaIcon;
@@ -130,4 +134,8 @@ function Delta() {}
 
 function nextPlayer() {
   playerNumber++;
+  document.getElementById("chooseSatelite").scrollIntoView();
+  document.getElementById("instructionChoice").textContent =
+    "Player " + playerNumber + " : choose a satellite";
+  changeButtonChoicesState(true);
 }
