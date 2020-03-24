@@ -253,3 +253,9 @@ form button {
 	letter-spacing: 1px;
 	color: #999;
 }
+
+#carte {
+	padding: 2em;
+	height: 450px;
+	border-radius: 30px;
+}

@@ -68,36 +68,47 @@ form.addEventListener("submit", e => {
 */
 
 form.addEventListener("submit", e => {
-  e.preventDefault();
-  var players = db.collection("players");
-  players.get().then(function(querySnapsot) {
-    querySnapsot.forEach(function(doc) {
-      if (
-        form.username.value == doc.data().username &&
-        form.password.value == doc.data().password
-      ) {
-        var found = true;
+	e.preventDefault();
+	var players = db.collection("players");
+	players.get().then(function(querySnapsot) {
+		querySnapsot.forEach(function(doc) {
+			if (
+				form.username.value == doc.data().username &&
+				form.password.value == doc.data().password
+			) {
+				var found = true;
 
-        let li = document.createElement("li");
-        let name = document.createElement("span");
-        let score = document.createElement("span");
-        let cross = document.createElement("div");
+				let li = document.createElement("li");
+				let name = document.createElement("span");
+				let score = document.createElement("span");
+				let cross = document.createElement("div");
 
-        li.setAttribute("data-id", doc.id);
-        name.textContent = doc.data().username;
-        score.textContent = "highest score: " + doc.data().record;
-        cross.textContent = "x";
+				li.setAttribute("data-id", doc.id);
+				name.textContent = doc.data().username;
+				score.textContent = "highest score: " + doc.data().record;
+				cross.textContent = "x";
 
-        li.appendChild(name);
-        li.appendChild(score);
-        li.appendChild(cross);
+				li.appendChild(name);
+				li.appendChild(score);
+				li.appendChild(cross);
 
-        cafeList.appendChild(li);
-      }
-    });
-  });
-
-  if (!found) {
-    alert("mauvais identifiant ou mot de passe");
-  }
+				cafeList.appendChild(li);
+			}
+			if (!found) {
+				alert("mauvais identifiant ou mot de passe");
+			}
+		});
+	});
 });
+
+//Leaflet
+var map = L.map("carte").setView([48.8534, 2.3488], 6);
+L.tileLayer(
+	"https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+	{
+		maxZoom: 20
+	}
+).addTo(map);
+
+var btn_play = document.getElementById("btn_play");
+btn_play.addEventListener("click", e => {});
