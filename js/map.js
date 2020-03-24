@@ -70,19 +70,27 @@ map.on("click", onMapClick);
 
 function chooseSatellite(satelliteName) {
   document.getElementById("about").scrollIntoView();
+  // disable buttons
+  var elems = document.getElementsByName("selectSatellite");
+  for (var i = 0; i < elems.length; i++) {
+    elems[i].disabled = true;
+  }
   satellite = satelliteName;
 }
 
+var indiaIcon;
+var markerIndia;
 function India(e) {
   if (satelliteIndia != undefined) {
     map.removeLayer(satelliteIndia);
+    map.removeLayer(markerIndia);
   }
 
-  const indiaIcon = L.icon({
+  indiaIcon = L.icon({
     iconUrl: "images/satellites/India.png",
     iconSize: [50, 32]
   });
-  const markerIndia = L.marker(e.latlng, { icon: indiaIcon }).addTo(map);
+  markerIndia = L.marker(e.latlng, { icon: indiaIcon }).addTo(map);
 
   satelliteIndia = L.circle(e.latlng, 688888 * 3, {
     color: "#000000",
@@ -93,7 +101,30 @@ function India(e) {
 
 function Charlie() {}
 
-function Echo() {}
+var markerEcho1;
+var markerEcho2;
+var nbEcho;
+function Echo(e) {
+  if (satelliteEcho2 != undefined) {
+    map.removeLayer(satelliteEcho2);
+    map.removeLayer(markerEcho2);
+  }
+
+  echoIcon = L.icon({
+    iconUrl: "images/satellites/Echo.png",
+    iconSize: [50, 32]
+  });
+
+  markerEcho1 = L.marker(e.latlng, { icon: echoIcon }).addTo(map);
+
+  satelliteEcho1 = L.circle(e.latlng, 688888 * 3, {
+    color: "#000000",
+    fillOpacity: 0,
+    opacity: 0.5
+  }).addTo(map);
+
+  nbEcho++;
+}
 
 function Delta() {}
 

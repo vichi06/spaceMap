@@ -121,6 +121,9 @@
                   name="guestCheckBox"
                   onclick="guestState()"
                 />
+                <label for="guestCheckBox" id="guestlabel" style="color:grey;"
+                  >Guest</label
+                >
                 <button>Add Player</button>
               </form>
               <section id="dynamic">
@@ -133,7 +136,7 @@
                 class="btn btn-primary text-white"
                 onclick="play()"
               >
-                <a href="#chooseSatelite">Play</a>
+                Play
               </button>
             </div>
 
@@ -151,7 +154,7 @@
     <!-- End -->
     <section
       id="chooseSatelite"
-      style="height:100vh;background-color: #3D4379   ;"
+      style="height:108vh;background-color: #3D4379   ;"
     >
       <div class="video-background-content container h-100">
         <div class="d-flex h-100 ">
@@ -169,14 +172,17 @@
                     name="selectSatellite"
                     class="signup"
                     onclick="chooseSatellite('India')"
+                    disabled
                   >
                     Choose
                   </button>
                   <ul>
                     <li>India new spaceships</li>
                     <li>Power :</li>
+                    <li>/</li>
                     <li>Create around India a circle.</li>
                     <li>Power of the circle : 7/10</li>
+                    <br /><br />
                   </ul>
                 </div>
                 <div id="Echo" class="plan" id="most-popular">
@@ -187,6 +193,7 @@
                     name="selectSatellite"
                     class="signup"
                     onclick="chooseSatellite('Echo')"
+                    disabled
                   >
                     Choose
                   </button>
@@ -196,6 +203,7 @@
                     <li>Can create 2 Echos spaceships.</li>
                     <li>Create a circle around Echos spaceships</li>
                     <li>Power of the circle : 4/10</li>
+                    <br />
                   </ul>
                 </div>
                 <div id="Charlie" class="plan">
@@ -208,6 +216,7 @@
                     name="selectSatellite"
                     class="signup"
                     onclick="chooseSatellite('Charlie')"
+                    disabled
                   >
                     Choose
                   </button>
@@ -230,6 +239,7 @@
                     name="selectSatellite"
                     class="signup"
                     onclick="chooseSatellite('Alpha')"
+                    disabled
                   >
                     Choose
                   </button>
@@ -290,15 +300,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Copyrights -->
-    <div class="bg-dark py-4">
-      <div class="container text-center">
-        <p class="text-white mb-0 py-2">
-          © 2019 Satelite Tracker All rights reserved.
-        </p>
       </div>
     </div>
 

@@ -86,6 +86,12 @@ function play() {
     playerList.childNodes.disabled = true;
     var playButton = document.getElementById("playButton");
     playButton.parentNode.removeChild(playButton);
+
+    // activate buttons
+    var elems = document.getElementsByName("selectSatellite");
+    for (var i = 0; i < elems.length; i++) {
+      elems[i].disabled = false;
+    }
   } else {
     alert("You need at least 1 player and maximum 4");
   }
@@ -98,18 +104,6 @@ function hasCorrectNumberOfPlayers() {
   } else {
     return false;
   }
-}
-
-// SATELLITES
-function chooseSatellite(satelliteName) {
-  document.getElementById("about").scrollIntoView();
-  /*
-  let img = document.createElement("img");
-  var src = "images/satellites/" + satelliteName + ".png";
-  img.setAttribute("src", src);
-  img.setAttribute("id", "draggable");
-  document.getElementById("mapView").appendChild(img);
-*/
 }
 
 // create element and render player
