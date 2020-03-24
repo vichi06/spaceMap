@@ -83,6 +83,7 @@ function play() {
   if (hasCorrectNumberOfPlayers()) {
     form.parentNode.removeChild(form);
     playerList.disabled = true;
+    playerList.childNodes.disabled = true;
     var playButton = document.getElementById("playButton");
     playButton.parentNode.removeChild(playButton);
   } else {
@@ -99,42 +100,17 @@ function hasCorrectNumberOfPlayers() {
   }
 }
 
-//Leaflet
-var map = L.map("carte").setView([48.8534, 2.3488], 6);
-L.tileLayer(
-	"https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
-	{
-		maxZoom: 20
-	}
-).addTo(map);
-
-const issIcon = L.icon({
-	iconUrl: "iss200.png",
-	iconSize: [50, 32],
-	iconAnchor: [25, 16]
-});
-
-const marker = L.marker([0, 0], { icon: issIcon }).addTo(map);
-
-const api_url = "https://api.wheretheiss.at/v1/satellites/25544";
-
-let firstTime = true;
-
-async function getISS() {
-	const response = await fetch(api_url);
-	const data = await response.json();
-	const { latitude, longitude } = data;
-
-	marker.setLatLng([latitude, longitude]);
-	if (firstTime) {
-		map.setView([latitude, longitude], 2);
-		firstTime = false;
-	}
-	document.getElementById("lat").textContent = latitude.toFixed(2);
-	document.getElementById("lon").textContent = longitude.toFixed(2);
+// SATELLITES
+function chooseSatellite(satelliteName) {
+  document.getElementById("about").scrollIntoView();
+  /*
+  let img = document.createElement("img");
+  var src = "images/satellites/" + satelliteName + ".png";
+  img.setAttribute("src", src);
+  img.setAttribute("id", "draggable");
+  document.getElementById("mapView").appendChild(img);
+*/
 }
-
-getISS();
 
 // create element and render player
 /*
