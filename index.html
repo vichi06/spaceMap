@@ -3,9 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Satelite lourd sa mere</title>
+		<title>Play ISS</title>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
 		<link
-			href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300&display=swap"
+			href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
 			rel="stylesheet"
 		/>
 		<link
@@ -23,8 +26,8 @@
 		<header class="header">
 			<nav class="navbar navbar-expand-lg fixed-top py-3">
 				<div class="container">
-					<a href="#" class="navbar-brand text-uppercase font-weight-bold"
-						>Satelite Tracker</a
+					<a href="#" class="navbar-brand text-uppercase font-weight-bold "
+						>PLAY ISS</a
 					><br /><br />
 
 					<button
@@ -83,26 +86,49 @@
 				<source src="images/sateliteBackground.mp4" type="video/mp4" />
 			</video>
 			<div class="video-background-content container h-100">
-				<div class="d-flex h-100 text-center align-items-center">
+				<div class="d-flex h-100 ">
 					<div class="w-100 text-white">
-						<h1 class="display-4">Bienvenue sur Satelite Tracker</h1>
+						<!--<h1 class="display-4">Bienvenue sur ISS Tracker</h1>-->
+						<h1 style="font-family:Ubuntu, sans-serif;">Players</h1>
 
-						<a href="spaceMap.html"
-							><button type="button" class="btn btn-primary">Tracker</button></a
-						>
+						<div class="content">
+							<form id="add-cafe-form">
+								<input
+									type="text"
+									name="username"
+									placeholder="username"
+									required
+								/>
+								<input
+									type="password"
+									name="password"
+									placeholder="password"
+									required
+								/>
+								<button>Add Player</button>
+							</form>
+							<section id="dynamic">
+								<ul id="cafe-list"></ul>
+							</section>
 
-						<section class="header-down-arrow">
-							<a href="#about" style="color:white;"
-								><i class="fa fa-angle-double-down fa-5x"></i
-							></a>
-						</section>
+							<button type="button" class="btn btn-primary text-white">
+								<a href="spaceMap.html" class="text-white">
+									Play
+								</a>
+							</button>
+
+							<section class="header-down-arrow">
+								<a href="#about" style="color:white;"
+									><i class="fa fa-angle-double-down fa-5x"></i
+								></a>
+							</section>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- End -->
 
-		<!-- Background video -->
 		<div class="video-background-holder" id="about">
 			<div class="video-background-overlay"></div>
 			<video
@@ -114,6 +140,7 @@
 			>
 				<source src="images/map.mp4" type="video/mp4" />
 			</video>
+
 			<div class="video-background-content container h-100">
 				<div class="d-flex h-100 text-center align-items-center">
 					<div class="w-100 text-white">
@@ -121,20 +148,20 @@
 							Suivre l'itininéraire d'un satelite n'aura <br />
 							jamais été aussi simple.
 						</h1>
-
-						<button type="button" class="btn btn-primary">
-							<a href="spaceMap.html" style="color: white;">Clickez ici!</a>
-						</button>
-
-						<section class="header-down-arrow">
-							<a href="#features" style="color:white;"
-								><i class="fa fa-angle-double-down fa-5x"></i
-							></a>
-						</section>
 					</div>
+					<button type="button" class="btn btn-primary align-items-center">
+						<a href="spaceMap.html" style="color: white;">Clickez ici!</a>
+					</button>
+
+					<section class="header-down-arrow">
+						<a href="#features" style="color:white;"
+							><i class="fa fa-angle-double-down fa-5x"></i
+						></a>
+					</section>
 				</div>
 			</div>
 		</div>
+
 		<!-- End -->
 		<section id="features" class="bg-light">
 			<div class="row">
@@ -307,6 +334,28 @@
 		<!-- End -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: "AIzaSyBP1FQSZB8iGSJynQ3z47niNQkHeB44-Zg",
+				authDomain: "whereistheiss-b74fc.firebaseapp.com",
+				databaseURL: "https://whereistheiss-b74fc.firebaseio.com",
+				projectId: "whereistheiss-b74fc",
+				storageBucket: "whereistheiss-b74fc.appspot.com",
+				messagingSenderId: "62396795593",
+				appId: "1:62396795593:web:84e7396b2c695605281b18",
+				measurementId: "G-FHG9Z72891"
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			firebase.analytics();
+			const db = firebase.firestore();
+		</script>
 		<script src="js/app.js"></script>
 	</body>
 </html>
