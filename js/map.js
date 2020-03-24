@@ -27,6 +27,10 @@ function toggle_map() {
   $("#mapMenu").toggle("slide");
 }
 
+function playerInvite() {
+  var checkbox = document.getElementById("")
+}
+
 $("#Alpha").draggable();
 $("#Echo").draggable();
 $("#India").draggable();

@@ -1,221 +1,169 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Play ISS</title>
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
-		<link
-			href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
-			rel="stylesheet"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-		/>
-		<link rel="stylesheet" href="css/index.css" />
-	</head>
-	<body>
-		<!-- Navbar-->
-		<header class="header">
-			<nav class="navbar navbar-expand-lg fixed-top py-3">
-				<div class="container">
-					<a href="#" class="navbar-brand text-uppercase font-weight-bold "
-						>PLAY ISS</a
-					><br /><br />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISS Tracker</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <!-- Navbar-->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+          <a href="#" class="navbar-brand text-uppercase font-weight-bold "
+            >PLAY ISS</a
+          ><br /><br />
 
-					<button
-						type="button"
-						data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-						class="navbar-toggler navbar-toggler-right"
-					>
-						<i class="fa fa-bars"></i>
-					</button>
+          <button
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler navbar-toggler-right"
+          >
+            <i class="fa fa-bars"></i>
+          </button>
 
-					<div id="navbarSupportedContent" class="collapse navbar-collapse">
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active">
-								<a
-									href="#about"
-									class="nav-link text-uppercase font-weight-bold"
-									>Home <span class="sr-only">(current)</span></a
-								>
-							</li>
-							<li class="nav-item">
-								<a
-									href="#features"
-									class="nav-link text-uppercase font-weight-bold"
-									>About</a
-								>
-							</li>
+          <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a
+                  href="#about"
+                  class="nav-link text-uppercase font-weight-bold"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  href="#features"
+                  class="nav-link text-uppercase font-weight-bold"
+                  >About</a
+                >
+              </li>
 
-							<li class="nav-item">
-								<a
-									href="#footer"
-									class="nav-link text-uppercase font-weight-bold"
-									>Contact</a
-								>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
+              <li class="nav-item">
+                <a
+                  href="#footer"
+                  class="nav-link text-uppercase font-weight-bold"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-		<!-- Background video -->
-		<div class="video-background-holder" id="home">
-			<div class="video-background-overlay"></div>
-			<video
-				playsinline="playsinline"
-				controls
-				autoplay="autoplay"
-				muted="muted"
-				loop="loop"
-				height="1200"
-			>
-				<source src="images/sateliteBackground.mp4" type="video/mp4" />
-			</video>
-			<div class="video-background-content container h-100">
-				<div class="d-flex h-100 ">
-					<div class="w-100 text-white">
-						<!--<h1 class="display-4">Bienvenue sur ISS Tracker</h1>-->
-						<h1 style="font-family:Ubuntu, sans-serif;">Players</h1>
+    <!-- Background video -->
+    <div class="video-background-holder" id="home">
+      <div class="video-background-overlay"></div>
+      <video
+        playsinline="playsinline"
+        controls
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+        height="1200"
+      >
+        <source src="images/sateliteBackground.mp4" type="video/mp4" />
+      </video>
 
-						<div class="content">
-							<form id="add-cafe-form">
-								<input
-									type="text"
-									name="username"
-									placeholder="username"
-									required
-								/>
-								<input
-									type="password"
-									name="password"
-									placeholder="password"
-									required
-								/>
-								<button>Add Player</button>
-							</form>
-							<section id="dynamic">
-								<ul id="cafe-list"></ul>
-							</section>
+      <div class="video-background-content container h-100">
+        <div class="d-flex h-100 ">
+          <div class="w-100 text-white">
+            <!--<h1 class="display-4">Bienvenue sur ISS Tracker</h1>-->
+            <h1 style="font-family:Ubuntu, sans-serif;">Players</h1>
+            <div class="content">
+              <form id="add-cafe-form">
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="username"
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  required
+                />
+                <input type="checkbox" id="" name="invite" onclick="playerInvite()" />
+                <button>Add Player</button>
+              </form>
+              <section id="dynamic">
+                <ul id="cafe-list"></ul>
+              </section>
 
-							<button type="button" class="btn btn-primary text-white">
-								<a href="spaceMap.html" class="text-white">
-									Play
-								</a>
-							</button>
+              <button type="button" class="btn btn-primary text-white">
+                <a href="spaceMap.html" class="text-white">
+                  Play
+                </a>
+              </button>
 
-							<section class="header-down-arrow">
-								<a href="#about" style="color:white;"
-									><i class="fa fa-angle-double-down fa-5x"></i
-								></a>
-							</section>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End -->
+              <section class="header-down-arrow">
+                <a href="#about" style="color:white;"
+                  ><i class="fa fa-angle-double-down fa-5x"></i
+                ></a>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
 
-		<div class="video-background-holder" id="about">
-			<div class="video-background-overlay"></div>
-			<video
-				playsinline="playsinline"
-				controls
-				autoplay="autoplay"
-				muted="muted"
-				loop="loop"
-			>
-				<source src="images/map.mp4" type="video/mp4" />
-			</video>
+    <div class="video-background-holder" id="about">
+      <div class="video-background-overlay"></div>
+      <video
+        playsinline="playsinline"
+        controls
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+      >
+        <source src="images/map.mp4" type="video/mp4" />
+      </video>
 
-			<div class="video-background-content container h-100">
-				<div class="d-flex h-100 text-center align-items-center">
-					<div class="w-100 text-white">
-						<h1 class="display-4">
-							Suivre l'itininéraire d'un satelite n'aura <br />
-							jamais été aussi simple.
-						</h1>
-						<button type="button" class="btn btn-primary">
-							<a href="spaceMap.html" style="color: white;">Clickez ici!</a>
-						</button>
-					</div>
+      <div class="video-background-content container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+          <div class="w-100 text-white">
+            <h1 class="display-4">
+              Suivre l'itininéraire d'un satelite n'aura <br />
+              jamais été aussi simple.
+            </h1>
+            <button type="button" class="btn btn-primary">
+              <a href="spaceMap.html" style="color: white;">Clickez ici!</a>
+            </button>
+          </div>
 
-					<section class="header-down-arrow">
-						<a href="#features" style="color:white;"
-							><i class="fa fa-angle-double-down fa-5x"></i
-						></a>
-					</section>
-				</div>
-			</div>
-		</div>
+          <section class="header-down-arrow">
+            <a href="#features" style="color:white;"
+              ><i class="fa fa-angle-double-down fa-5x"></i
+            ></a>
+          </section>
+        </div>
+      </div>
+    </div>
 
-		<!-- End -->
-		<section id="features" class="bg-light">
-			<div class="row">
-				<div class="feature-box col-lg-4 col-md-12 col-sm-12">
-					<i
-						class="icon fa fa-check-circle fa-4x wow fadeIn"
-						data-wow-delay="0.5s"
-					>
-					</i
-					><br /><br />
-					<h3
-						class="font-weight-bold text-center"
-						style="font-family:'Noto Sans', sans-serif;"
-					>
-						Facile à utiliser.
-					</h3>
-					<p class="text-center" style="font-family:'Noto Sans', sans-serif;">
-						Un outil à la portée de tous.
-					</p>
-				</div>
-				<div class="feature-box col-lg-4 col-md-12 col-sm-12 ">
-					<i
-						class="icon fa fa-bullseye fa-4x animated wow fadeIn"
-						data-wow-delay="0.5s"
-					></i
-					><br /><br />
-					<h3
-						class="font-weight-bold text-center"
-						style="font-family:'Noto Sans', sans-serif;"
-					>
-						Le meilleur sur le marché.
-					</h3>
-					<p class="text-center" style="font-family:'Noto Sans', sans-serif;">
-						Pas plus rapide et ergonome.
-					</p>
-				</div>
-				<div class="feature-box col-lg-4 col-md-12 col-sm-12">
-					<i
-						class="icon fa fa-heart fa-4x animated wow fadeIn"
-						data-wow-delay="0.5s"
-					></i
-					><br /><br />
-					<h3
-						class="font-weight-bold text-center"
-						style="font-family:'Noto Sans', sans-serif;"
-					>
-						Codé avec attention.
-					</h3>
-					<p class="text-center" style="font-family:'Noto Sans', sans-serif;">
-						Une équipe de développeurs passionnés.
-					</p>
-				</div>
-			</div>
-		</section>
+<<<<<<< HEAD
 		<!-- Background video -->
 		<div class="video-background-holder">
 			<div class="video-background-overlay"></div>
@@ -232,130 +180,202 @@
 				<div class="d-flex h-100 text-center align-items-center">
 					<div class="w-100 text-white">
 						<h1 class="display-4">En savoir plus sur l'espace</h1>
+=======
+    <!-- End -->
+    <section id="features" class="bg-light">
+      <div class="row">
+        <div class="feature-box col-lg-4 col-md-12 col-sm-12">
+          <i
+            class="icon fa fa-check-circle fa-4x wow fadeIn"
+            data-wow-delay="0.5s"
+          >
+          </i
+          ><br /><br />
+          <h3
+            class="font-weight-bold text-center"
+            style="font-family:'Noto Sans', sans-serif;"
+          >
+            Facile à utiliser.
+          </h3>
+          <p class="text-center" style="font-family:'Noto Sans', sans-serif;">
+            Un outil à la portée de tous.
+          </p>
+        </div>
+        <div class="feature-box col-lg-4 col-md-12 col-sm-12 ">
+          <i
+            class="icon fa fa-bullseye fa-4x animated wow fadeIn"
+            data-wow-delay="0.5s"
+          ></i
+          ><br /><br />
+          <h3
+            class="font-weight-bold text-center"
+            style="font-family:'Noto Sans', sans-serif;"
+          >
+            Le meilleur sur le marché.
+          </h3>
+          <p class="text-center" style="font-family:'Noto Sans', sans-serif;">
+            Pas plus rapide et ergonome.
+          </p>
+        </div>
+        <div class="feature-box col-lg-4 col-md-12 col-sm-12">
+          <i
+            class="icon fa fa-heart fa-4x animated wow fadeIn"
+            data-wow-delay="0.5s"
+          ></i
+          ><br /><br />
+          <h3
+            class="font-weight-bold text-center"
+            style="font-family:'Noto Sans', sans-serif;"
+          >
+            Codé avec attention.
+          </h3>
+          <p class="text-center" style="font-family:'Noto Sans', sans-serif;">
+            Une équipe de développeurs passionnés.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Background video -->
+    <div class="video-background-holder">
+      <div class="video-background-overlay"></div>
+      <video
+        playsinline="playsinline"
+        controls
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+      >
+        <source src="images/background.mp4" type="video/mp4" />
+      </video>
+      <div class="video-background-content container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+          <div class="w-100 text-white">
+            <h1 class="display-4">En savoir plus sur l'espace</h1>
+>>>>>>> aa6aa578ef4401ea0526d9858839719f24a31ba0
 
-						<button type="button" class="btn btn-primary">
-							<a href="https://www.nasa.gov/" style="color: white;"
-								>Clickez ici!</a
-							>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End -->
-		<!-- Footer -->
-		<footer class="bg-light  " id="footer">
-			<div class="container py-5">
-				<div class="row py-4">
-					<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-						<img src="images/logo.JPG" alt="" width="180" class="mb-3" />
-					</div>
-					<div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-						<h6 class="text-uppercase font-weight-bold mb-4">Shop</h6>
-						<ul class="list-unstyled mb-0">
-							<li class="mb-2"><a href="#" class="text-muted">For Women</a></li>
-							<li class="mb-2"><a href="#" class="text-muted">For Men</a></li>
-							<li class="mb-2"><a href="#" class="text-muted">Stores</a></li>
-							<li class="mb-2"><a href="#" class="text-muted">Our Blog</a></li>
-						</ul>
-					</div>
-					<div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-						<h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
-						<ul class="list-unstyled mb-0">
-							<li class="mb-2"><a href="#" class="text-muted">Login</a></li>
-							<li class="mb-2"><a href="#" class="text-muted">Register</a></li>
-							<li class="mb-2"><a href="#" class="text-muted">Wishlist</a></li>
-							<li class="mb-2">
-								<a href="#" class="text-muted">Our Products</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-lg-0">
-						<h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
+            <button type="button" class="btn btn-primary">
+              <a href="https://www.nasa.gov/" style="color: white;"
+                >Clickez ici!</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+    <!-- Footer -->
+    <footer class="bg-light  " id="footer">
+      <div class="container py-5">
+        <div class="row py-4">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <img src="images/logo.JPG" alt="" width="180" class="mb-3" />
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h6 class="text-uppercase font-weight-bold mb-4">Shop</h6>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2"><a href="#" class="text-muted">For Women</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">For Men</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">Stores</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">Our Blog</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2"><a href="#" class="text-muted">Login</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">Register</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">Wishlist</a></li>
+              <li class="mb-2">
+                <a href="#" class="text-muted">Our Products</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-lg-0">
+            <h6 class="text-uppercase font-weight-bold mb-4">Contact</h6>
 
-						<div class="p-1 rounded border">
-							<div class="input-group">
-								<input
-									type="email"
-									placeholder="Enter your email address"
-									aria-describedby="button-addon1"
-									class="form-control border-0 shadow-0"
-								/>
-								<div class="input-group-append">
-									<button id="button-addon1" type="submit" class="btn btn-link">
-										<i class="fa fa-paper-plane"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-						<ul class="list-inline mt-4 bg-light">
-							<li class="list-inline-item">
-								<a href="#" target="_blank" title="twitter"
-									><i class="fa fa-twitter"></i
-								></a>
-							</li>
-							<li class="list-inline-item">
-								<a href="#" target="_blank" title="facebook"
-									><i class="fa fa-facebook"></i
-								></a>
-							</li>
-							<li class="list-inline-item">
-								<a href="#" target="_blank" title="instagram"
-									><i class="fa fa-instagram"></i
-								></a>
-							</li>
-							<li class="list-inline-item">
-								<a href="#" target="_blank" title="pinterest"
-									><i class="fa fa-pinterest"></i
-								></a>
-							</li>
-							<li class="list-inline-item">
-								<a href="#" target="_blank" title="vimeo"
-									><i class="fa fa-vimeo"></i
-								></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+            <div class="p-1 rounded border">
+              <div class="input-group">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  aria-describedby="button-addon1"
+                  class="form-control border-0 shadow-0"
+                />
+                <div class="input-group-append">
+                  <button id="button-addon1" type="submit" class="btn btn-link">
+                    <i class="fa fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <ul class="list-inline mt-4 bg-light">
+              <li class="list-inline-item">
+                <a href="#" target="_blank" title="twitter"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" target="_blank" title="facebook"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" target="_blank" title="instagram"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" target="_blank" title="pinterest"
+                  ><i class="fa fa-pinterest"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" target="_blank" title="vimeo"
+                  ><i class="fa fa-vimeo"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-			<br />
-			<br />
-			<!-- Copyrights -->
-			<div class="bg-dark py-4">
-				<div class="container text-center">
-					<p class="text-white mb-0 py-2">
-						© 2019 Satelite Tracker All rights reserved.
-					</p>
-				</div>
-			</div>
-		</footer>
-		<!-- End -->
-		<!-- End -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <br />
+      <br />
+      <!-- Copyrights -->
+      <div class="bg-dark py-4">
+        <div class="container text-center">
+          <p class="text-white mb-0 py-2">
+            © 2019 Satelite Tracker All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End -->
+    <!-- End -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-		<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
 
-		<script>
-			// Your web app's Firebase configuration
-			var firebaseConfig = {
-				apiKey: "AIzaSyBP1FQSZB8iGSJynQ3z47niNQkHeB44-Zg",
-				authDomain: "whereistheiss-b74fc.firebaseapp.com",
-				databaseURL: "https://whereistheiss-b74fc.firebaseio.com",
-				projectId: "whereistheiss-b74fc",
-				storageBucket: "whereistheiss-b74fc.appspot.com",
-				messagingSenderId: "62396795593",
-				appId: "1:62396795593:web:84e7396b2c695605281b18",
-				measurementId: "G-FHG9Z72891"
-			};
-			// Initialize Firebase
-			firebase.initializeApp(firebaseConfig);
-			firebase.analytics();
-			const db = firebase.firestore();
-		</script>
-		<script src="js/app.js"></script>
-	</body>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBP1FQSZB8iGSJynQ3z47niNQkHeB44-Zg",
+        authDomain: "whereistheiss-b74fc.firebaseapp.com",
+        databaseURL: "https://whereistheiss-b74fc.firebaseio.com",
+        projectId: "whereistheiss-b74fc",
+        storageBucket: "whereistheiss-b74fc.appspot.com",
+        messagingSenderId: "62396795593",
+        appId: "1:62396795593:web:84e7396b2c695605281b18",
+        measurementId: "G-FHG9Z72891"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const db = firebase.firestore();
+    </script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
